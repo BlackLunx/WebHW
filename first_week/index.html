@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1 class="center">TASO: Optimizing Deep Learning Computation with
+        Automatic Generation of Graph Substitutions</h1>
+    <h2 class="center">TASO: Optimizing Deep Learning Computation with
+        Automatic Generation of Graph Substitutions</h2>
+    <h3 class="center">TASO: Optimizing Deep Learning Computation with
+        Automatic Generation of Graph Substitutions</h3>
+    <h4 class="center">TASO: Optimizing Deep Learning Computation with
+        Automatic Generation of Graph Substitutions</h4>
+    <p><strong>Authors:</strong></p>
+    <ul>
+        <li>Zhihao Jia</li>
+        <li>Oded Padon</li>
+        <li>James Thomas</li>
+    </ul>
+    <p><strong>Authors:</strong></p>
+    <ol>
+        <li>Zhihao Jia</li>
+        <li>Oded Padon</li>
+        <li>James Thomas</li>
+    </ol>
+    <pre> <b><u>Generating substitutions.</u></b>
+        <i>TASO’s graph substitution generator</i> enumerates all possible computation graphs over a
+        given set of DNN operators (e.g., the cuDNN kernels <b>[10]</b>) up
+        to a fixed size, and executes them on a set of random input
+        tensors. Any pair of computation graphs that have identical
+        results on the random inputs are considered as a candidate
+        substitution. To efficiently find all such pairs, <i>TASO</i> constructs a hash table where computation graphs are stored
+        based on the hash of their outputs for the random inputs
+    </pre>
+    <img src="imgs/inference.png" alt="Inference results" style="width:700px;height:200px;" class='image_pads'>
+    <p class='center'><b>Image 1</b></p>
+    <img src="imgs/graph_subst.png" alt="Graph substitutions",  style="width:900px;height:200px;border: 3px solid #00a8e1;" class='image_pads'>
+    <p class='center'><b>Image 2</b></p>
+    <pre>A graph substitution for fusing matrix multiplications with a shared input. The target graph has a concat and a
+        split operator, both of which are performed along the row dimension of a matrix. <q>The split tree of the row dimension for
+        each tensor is shown in a gray box.</q></pre>
+    <p>
+        <sup><b>Step 1.</b></sup> Enumerating potential graphs and collecting their fingerprints. <sub><i>(Image 1)</i></sub>
+    </p>
+    <p>
+        <a href="https://cs.stanford.edu/~zhihao/papers/sosp19.pdf" target="_blank">Paper</a>.
+        Press on <q>Paper</q> to see full text
+    </p>
+
+    <table style="width:100%">
+        <tr>
+          <th>Operator Property</th>
+          <th>Comment</th>
+        </tr>
+        <tr>
+          <td>∀x,y, z. ewadd(x, ewadd(y, z)) = ewadd(ewadd(x,y), z)</td>
+          <td>ewadd is associative</td>
+        </tr>
+        <tr>
+          <td>∀x,y. ewadd(x,y) = ewadd(y, x)</td>
+          <td>ewadd is commutative</td>
+        </tr>
+        <tr>
+            <td>∀x,y, z. ewmul(x, ewmul(y, z)) = ewmul(ewmul(x,y), z)</td>
+            <td>ewmul is associative</td>
+        </tr>
+        <tr>
+            <td>∀x,y. ewmul(x,y) = ewmul(y, x)</td>
+            <td>ewmul is commutative</td>
+        </tr>
+      </table>
+
+      <form>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br>
+        <label for="under">Understanding: </label><br>
+        <input type="text" id="under" name="under"><br>
+        <label for="appl">Applicability: </label><br>
+        <input type="text" id="appl" name="appl"><br>
+        <input type="submit">
+      </form>
+</body>
+</html>
+

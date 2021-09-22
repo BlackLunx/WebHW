@@ -1,0 +1,12 @@
+.center {
+    text-align: center;
+}
+
+img.image_pads {
+    padding-bottom:30px;
+    padding-top:30px;
+    margin-left: 250px;
+}
+table, th, td {
+    border:1px solid black;
+}
